@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Máquina de Ventas B2B: El Playbook de Domu — Blog de Miguel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --accent: #1a4fa0;
+    --accent2: #2d6fd4;
+    --muted: #7a7468;
+    --border: #ddd8ce;
+    --card: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 760px;
+    margin: 0 auto 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 13px;
+    color: rgba(245,240,232,0.5);
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span::before {
+    content: '· ';
+  }
+  .hero-meta span:first-child::before { content: ''; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro p {
+    font-size: 1.15rem;
+    color: #3a3830;
+    max-width: 640px;
+  }
+
+  .intro p + p { margin-top: 16px; }
+
+  /* ── SECTION TITLES ── */
+  .section {
+    padding: 56px 0 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── IDEAS PRINCIPALES ── */
+  .ideas-grid {
+    display: grid;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .idea-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+
+  .idea-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--border);
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    line-height: 1;
+  }
+
+  .idea-card h3 {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+    padding-right: 48px;
+  }
+
+  .idea-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── VISUAL FRAMEWORK ── */
+  .framework {
+    margin-top: 40px;
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 40px;
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .framework::before {
+    content: 'FUNNEL';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .framework-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .funnel-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 20px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .stage:hover { background: rgba(255,255,255,0.04); }
+
+  .stage-name {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .stage-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stage-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .stage-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #1a4fa0, #2d6fd4);
+  }
+
+  .stage-desc {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.55);
+    min-width: 200px;
+  }
+
+  .connector {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 0 0 59px;
+  }
+
+  /* ── QUOTES ── */
+  .quote-block {
+    margin: 48px 0;
+    padding: 32px 40px;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .quote-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .quote-source {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── GATE ── */
+  .gate-section {
+    margin: 64px 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .gate-preview {
+    padding: 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .gate-preview h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  .preview-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .preview-items li {
+    font-size: 0.92rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .preview-items li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+
+  /* blur overlay */
+  .blur-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--card));
+  }
+
+  .gate-cta {
+    padding: 40px;
+    text-align: center;
+    background: #fafaf7;
+  }
+
+  .gate-cta p {
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .gate-cta small {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .email-form input[type="email"] {
+    flex: 1;
+    min-width: 220px;
+    padding: 13px 18px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .email-form input[type="email"]:focus {
+    border-color: var(--accent);
+  }
+
+  .email-form button {
+    padding: 13px 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .email-form button:hover { background: #133a7a; }
+  .email-form button:active { transform: scale(0.98); }
+
+  /* ── CHECKLIST (locked) ── */
+  .checklist-locked {
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    filter: blur(4px);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .checklist-locked h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* success state */
+  .gate-success {
+    display: none;
+    padding: 40px;
+    text-align: center;
+    background: #fafaf7;
+  }
+
+  .gate-success .checkmark {
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .gate-success h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .gate-success p { font-size: 0.9rem; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .idea-card {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .idea-card:nth-child(1) { animation-delay: 0.05s; }
+  .idea-card:nth-child(2) { animation-delay: 0.12s; }
+  .idea-card:nth-child(3) { animation-delay: 0.19s; }
+  .idea-card:nth-child(4) { animation-delay: 0.26s; }
+  .idea-card:nth-child(5) { animation-delay: 0.33s; }
+
+  /* ── METRICS + TABS ── */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .metric-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px;
+  }
+
+  .metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .metric-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  .flow-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .flow-steps { display: flex; flex-direction: column; gap: 6px; }
+
+  .flow-step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .flow-step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .flow-step-header:hover { background: #fafaf7; }
+
+  .step-num {
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 14px;
+  }
+
+  .step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    flex: 1;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .step-badge {
+    font-size: 11px;
+    background: #f0ece4;
+    color: var(--muted);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+
+  .step-arrow {
+    font-size: 11px;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+
+  .flow-step.open .step-arrow { transform: rotate(180deg); }
+
+  .flow-step-body {
+    display: none;
+    padding: 0 20px 18px 58px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .flow-step.open .flow-step-body { display: block; }
+
+  .flow-arrow {
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1;
+    margin: 2px 0;
+  }
+
+  @media (max-width: 600px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── END METRICS ── */
+
+  @media (max-width: 600px) {
+    .framework { padding: 28px 20px; }
+    .stage { grid-template-columns: 90px 1fr; }
+    .stage-desc { display: none; }
+    .quote-block { padding: 24px 20px; }
+    .gate-preview, .gate-cta { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag">Blog de Miguel · Masterclass 30X</div>
+  <h1>Máquina de Ventas B2B:<br><em>El Playbook de Domu</em></h1>
+  <div class="hero-meta">
+    <span>Sesión con Nico — CEO de Domu</span>
+    <span>Lectura: 6 min</span>
+    <span>Incluye Checklist de Aplicación</span>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Nico fundó Domu con 20 años, después de ganar $180K USD en una startup de crypto en Estados Unidos. Hoy Domu tiene como clientes a Nubank, PNC Financial y la segunda aseguradora más grande en Personal Line Insurance. El 85% de su revenue viene de EE.UU.</p>
+    <p>En esta sesión describió la máquina de ventas completa: cómo pasar de 0 a 4.000 intentos de llamadas por semana por vendedor, qué herramientas usa, y cómo cierra cuentas Enterprise, la estrategia completa. Abajo está todo resumido — y el checklist para que lo apliques lo antes posible.</p>
+  </div>
+
+  <!-- IDEAS PRINCIPALES -->
+  <div class="section">
+    <div class="section-label">Ideas principales</div>
+    <h2>Lo que no puedes perderte del episodio</h2>
+
+    <div class="ideas-grid">
+
+      <div class="idea-card">
+        <span class="idea-number">01</span>
+        <h3>Fuerza bruta + tecnología: la combinación que nadie quiere hacer</h3>
+        <p>Meta de 4.000 dial out por semana por vendedor no es un error tipográfico. Domu lo hace con un dialer que permite llamar a muchas personas simultáneamente. En LATAM el porcentaje de conexión es ~10%, en USA ~15%. Funciona. Hasta CEOs contestan.</p>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-number">02</span>
+        <h3>Las señales de compra son más valiosas que cualquier lista fría</h3>
+        <p>Domu usa Clay para detectar señales: ¿están contratando collectors? ¿levantaron plata? ¿lanzaron un producto de crédito? ¿hablan de AI en LinkedIn? Contactar en el momento correcto multiplica la tasa de conversión sin aumentar el volumen.</p>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-number">03</span>
+        <h3>En Enterprise siempre hablas con el dueño del "circo", no con los "payasos"</h3>
+        <p>El primer contacto siempre apunta al nivel más alto: COO, CFO, VP de Collections. Para cerrar Shop necesitaron 20 puntos de contacto. La conversión cuando llegas al CEO es muy alta — lo difícil es conseguir esa primera reunión.</p>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-number">04</span>
+        <h3>Multi-threading: nunca dependas de un solo contacto dentro de la cuenta</h3>
+        <p>Una vez dentro, mapea el comité de compra completo: owner del proyecto, evaluador técnico, budget owner, compliance, operaciones y champion. Cada uno necesita un mensaje distinto. El error más común es solo hablar con el champion.</p>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-number">05</span>
+        <h3>Los vendedores técnicos ganan donde los comerciales pierden</h3>
+        <p>En EE.UU. los compraban porque los percibían como más técnicos que la competencia. Sus vendedores son ingenieros que hablan de cybersecurity, compliance y arquitectura de sistemas — el lenguaje exacto que usan los bancos para tomar decisiones.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- METRICS + EXPANDABLE FLOW -->
+  <div class="section">
+    <div class="section-label">Números del playbook</div>
+    <h2>Los benchmarks reales de Domu</h2>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('tofu')">Top of Funnel</button>
+      <button class="tab-btn" onclick="switchTab('enterprise')">Enterprise</button>
+    </div>
+
+    <!-- TOP OF FUNNEL -->
+    <div class="tab-content active" id="tab-tofu">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">4.000</div>
+          <div class="metric-label">dials / sem. por vendedor</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">10–15%</div>
+          <div class="metric-label">tasa de conexión</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">10</div>
+          <div class="metric-label">demos / sem. por vendedor</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">28:1</div>
+          <div class="metric-label">demo → cliente</div>
+        </div>
+      </div>
+
+      <div class="flow-label">Flujo del embudo</div>
+      <div class="flow-steps">
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">1</span>
+            <span class="step-dot" style="background:#7c6ff7"></span>
+            <span class="step-title">Señales + Prospección</span>
+            <span class="step-badge">Clay + señales</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            Domu usa Clay para extraer teléfonos (85% de alcance) y emails (95%+). Las señales que activan el prospecting: están contratando collectors, levantaron dinero, lanzaron producto de crédito, o han hablado de AI en LinkedIn.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">2</span>
+            <span class="step-dot" style="background:#3dba7a"></span>
+            <span class="step-title">Contacto masivo</span>
+            <span class="step-badge">3 canales</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            Tres canales simultáneos: (1) Cold call con Trellus — dialer que llama a muchas personas a la vez, 4.000 dials/semana por vendedor. (2) LinkedIn automatizado con Unipile — 150 requests/semana por perfil, usados en 5 perfiles simultáneos, solo C-suite. (3) Cold email para speakers de conferencias del segmento de mercado — se ha llegado hasta 40 reuniones en una semana por persona.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">3</span>
+            <span class="step-dot" style="background:#f0a940"></span>
+            <span class="step-title">Demo / Primera reunión</span>
+            <span class="step-badge">10 demos/sem.</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            5 demos vienen de cold call, 5 de LinkedIn. Todas las llamadas se graban con Granola IA (sin bot visible, transcribe en segundo plano) o HubSpot. Nico revisa los videos para ver cómo reaccionan los prospectos y hacer coaching a los vendedores.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">4</span>
+            <span class="step-dot" style="background:#e0504a"></span>
+            <span class="step-title">Seguimiento + Cierre</span>
+            <span class="step-badge">1 de cada 28 demos</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            1 de cada 28 demos se convierte en cliente. La transparencia es total: canal de Slack con métricas en tiempo real, check-in y check-out diario de vendedores. Un coach con IA flagea objeciones comunes y da feedback basado en las grabaciones.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="tab-content" id="tab-enterprise">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">20+</div>
+          <div class="metric-label">puntos de contacto para llegar a un cliente. Ejemplo: Shop</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">85%</div>
+          <div class="metric-label">revenue desde EE.UU. (vs 0% en 2024)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">6</div>
+          <div class="metric-label">roles a mapear por cuenta Enterprise</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">Alta</div>
+          <div class="metric-label">conversión al llegar al CEO</div>
+        </div>
+      </div>
+
+      <div class="flow-label">Flujo Enterprise</div>
+      <div class="flow-steps">
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">1</span>
+            <span class="step-dot" style="background:#7c6ff7"></span>
+            <span class="step-title">Apuntar siempre al más alto</span>
+            <span class="step-badge">COO · CFO · VP</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            El primer intento siempre apunta al dueño del "circo": COO, CFO, VP de Collections, VP de Operations. El primer cliente de Domu salió de un cold call directo al CEO. La conversión cuando llegas al nivel correcto es alta; el reto es conseguir esa reunión.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">2</span>
+            <span class="step-dot" style="background:#3dba7a"></span>
+            <span class="step-title">Mapear el comité de compra</span>
+            <span class="step-badge">6 roles clave</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            Al conseguir la primera reunión, mapear inmediatamente: (1) Owner del proyecto — ¿quién lo gestiona día a día? (2) Technical evaluator — due diligence técnico. (3) Budget owner — quien aprueba. (4) Risk/Compliance — crítico en bancos. (5) Operations — quien ve resultados. (6) Champion — quien lo defiende internamente. Herramientas: Google Docs + HubSpot.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">3</span>
+            <span class="step-dot" style="background:#f0a940"></span>
+            <span class="step-title">Multithreading simultáneo</span>
+            <span class="step-badge">Todos a la vez</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            Una vez identificado el comité, intentar reunirse con cada rol por separado. Para Shop fueron 20 puntos de contacto en total. El pitch de compliance es el argumento principal — los bancos tienen miedo de que una IA diga algo incorrecto y genere una demanda millonaria.
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-step" onclick="toggleStep(this)">
+          <div class="flow-step-header">
+            <span class="step-num">4</span>
+            <span class="step-dot" style="background:#e0504a"></span>
+            <span class="step-title">Cierre + Expansión</span>
+            <span class="step-badge">Sistema operativo</span>
+            <span class="step-arrow">▼</span>
+          </div>
+          <div class="flow-step-body">
+            La visión de largo plazo: entrar por cobranza, automatizar todo el backoffice, convertirse en el sistema operativo de collections y servicing. Una vez dentro, no te pueden sacar sin sangre. Nubank gasta 50M USD/año solo en call centers — eso es el potencial del mercado.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Tech Stack</div>
+    <h2>Las herramientas detrás de la máquina</h2>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <blockquote>"Los ingenieros dicen 'soy muy técnico'. Lo que están diciendo es 'soy malo en comercial'. Mira lo que una habilidad técnica hace cuando querés construir una máquina de ventas."</blockquote>
+    <div class="quote-source">— Andrés Bilbao · Sesión 30X</div>
+  </div>
+
+  <!-- GATE -->
+  <div class="gate-section" id="gateSection">
+
+    <!-- PREVIEW BLOQUEADO: funnel + checklist difuminados -->
+    <div class="gate-preview" id="gatePreview">
+
+      <!-- Vista previa simple del funnel -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:16px;">El embudo completo de Domu + Checklist de aplicación</h3>
+      <ul class="preview-items">
+        <li>Stack completo: Clay · Trellus · Unipile · Granola · HubSpot</li>
+        <li>Cómo configurar cada herramienta paso a paso</li>
+        <li>Guía rápida para arrancar con Trellus (cold calling masivo)</li>
+        <li>Plantilla de account mapping para cuentas Enterprise</li>
+        <li>Actividades día a día para implementar el playbook</li>
+      </ul>
+
+      <div class="blur-overlay"></div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="gate-cta" id="gateCta">
+      <p>Deja tu correo y mira a detalle el embudo de venta y recibe el checklist completo</p>
+      <small>Sin spam. Solo contenido aplicable de Miguel.</small>
+      <div class="email-form">
+        <input type="email" id="emailInput" placeholder="tucorreo@empresa.com" />
+        <button onclick="handleSubmit()">Quiero el checklist →</button>
+      </div>
+    </div>
+
+    <!-- ÉXITO -->
+    <div class="gate-success" id="gateSuccess">
+      <div class="checkmark">✓</div>
+      <h4>¡Listo! Revisa tu correo.</h4>
+      <p>Te enviamos el checklist completo. Ya puedes ver el embudo y las actividades abajo.</p>
+    </div>
+
+    <!-- CONTENIDO DESBLOQUEADO: funnel + checklist completos -->
+    <div class="checklist-locked" id="checklist">
+
+      <!-- Funnel completo -->
+      <div class="framework" style="margin-bottom:40px;">
+        <div class="framework-title">Stack completo de Domu — Prospección → Cierre</div>
+        <div class="funnel-stages">
+          <div class="stage">
+            <div class="stage-name">Prospección</div>
+            <div class="stage-bar-wrap">
+              <div class="stage-bar"><div class="stage-fill" style="width:100%"></div></div>
+              <div class="stage-desc">Clay — teléfonos 85%, emails 95%+</div>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="stage">
+            <div class="stage-name">Cold Call</div>
+            <div class="stage-bar-wrap">
+              <div class="stage-bar"><div class="stage-fill" style="width:82%"></div></div>
+              <div class="stage-desc">Trellus — dialer masivo simultáneo</div>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="stage">
+            <div class="stage-name">LinkedIn</div>
+            <div class="stage-bar-wrap">
+              <div class="stage-bar"><div class="stage-fill" style="width:65%"></div></div>
+              <div class="stage-desc">Unipile — 150 req/sem, 5 perfiles</div>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="stage">
+            <div class="stage-name">Grabación</div>
+            <div class="stage-bar-wrap">
+              <div class="stage-bar"><div class="stage-fill" style="width:48%"></div></div>
+              <div class="stage-desc">Granola — sin bot, transcripción silenciosa</div>
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div class="stage">
+            <div class="stage-name">CRM</div>
+            <div class="stage-bar-wrap">
+              <div class="stage-bar"><div class="stage-fill" style="width:30%"></div></div>
+              <div class="stage-desc">HubSpot — pipeline + account mapping</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist completo -->
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:20px;">Actividades para aplicar esta semana</h3>
+
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Día 1:</strong> Define tus 3 señales de compra principales. ¿Qué eventos indican que alguien necesita tu producto ahora? (contrataciones, financiamiento, cambio de cargo, etc.)</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Día 2:</strong> Crea una lista de 50 prospectos en Clay usando al menos una señal. Verifica que tengas teléfono o email para cada uno.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Día 3:</strong> Haz 20 cold calls. No para vender — para practicar el pitch de 30 segundos y escuchar objeciones reales. Graba cada llamada.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Día 4:</strong> Activa LinkedIn outreach en tu perfil. Envía 20 requests a C-Level con un mensaje personalizado basado en algo concreto de su empresa.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Día 5:</strong> Para cada cuenta interesada de Enterprise, mapea los 6 roles: owner, evaluador técnico, budget, compliance, operaciones y champion. Aunque no los conozcas aún, identifica quiénes podrían serlo.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div><strong>Fin de semana:</strong> Lee los primeros 3 capítulos de <em>Predictable Revenue</em> de Aaron Ross. Es el libro que construyó el motor de ventas de Salesforce — Nico lo recomienda directamente.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Blog de Miguel</div>
+  <p>Marketing · Ventas · Crecimiento B2B</p>
+</footer>
+
+<script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleStep(el) {
+    el.classList.toggle('open');
+  }
+
+  function handleSubmit() {
+    const email = document.getElementById('emailInput').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailInput').style.borderColor = '#1a4fa0';
+      document.getElementById('emailInput').focus();
+      return;
+    }
+
+    // Ocultar preview difuminado y formulario
+    document.getElementById('gatePreview').style.display = 'none';
+    document.getElementById('gateCta').style.display = 'none';
+
+    // Mostrar éxito
+    document.getElementById('gateSuccess').style.display = 'block';
+
+    // Desbloquear funnel + checklist
+    const checklist = document.getElementById('checklist');
+    checklist.style.filter = 'none';
+    checklist.style.opacity = '1';
+    checklist.style.pointerEvents = 'auto';
+    checklist.style.userSelect = 'auto';
+    checklist.style.transition = 'all 0.5s ease';
+
+    console.log('New subscriber:', email);
+  }
+
+  // Allow Enter key
+  document.getElementById('emailInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+
+</body>
+</html>
