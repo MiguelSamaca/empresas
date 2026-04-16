@@ -1078,22 +1078,36 @@
       return;
     }
 
-    // Ocultar preview difuminado y formulario
-    document.getElementById('gatePreview').style.display = 'none';
-    document.getElementById('gateCta').style.display = 'none';
+    // Deshabilitar botón mientras envía
+    const btn = document.querySelector('.email-form button');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
 
-    // Mostrar éxito
-    document.getElementById('gateSuccess').style.display = 'block';
+    // Enviar a Google Sheets
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHkDvx-sbyXVMJI57fArIRrvydBd8PpxZFY-aDLO3fXvfqPNK96nY62iSrCqUMu1Jm/exec';
 
-    // Desbloquear funnel + checklist
-    const checklist = document.getElementById('checklist');
-    checklist.style.filter = 'none';
-    checklist.style.opacity = '1';
-    checklist.style.pointerEvents = 'auto';
-    checklist.style.userSelect = 'auto';
-    checklist.style.transition = 'all 0.5s ease';
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    })
+    .finally(() => {
+      // Ocultar preview y formulario
+      document.getElementById('gatePreview').style.display = 'none';
+      document.getElementById('gateCta').style.display = 'none';
 
-    console.log('New subscriber:', email);
+      // Mostrar éxito
+      document.getElementById('gateSuccess').style.display = 'block';
+
+      // Desbloquear funnel + checklist
+      const checklist = document.getElementById('checklist');
+      checklist.style.filter = 'none';
+      checklist.style.opacity = '1';
+      checklist.style.pointerEvents = 'auto';
+      checklist.style.userSelect = 'auto';
+      checklist.style.transition = 'all 0.5s ease';
+    });
   }
 
   // Allow Enter key
