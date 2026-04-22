@@ -672,11 +672,63 @@
   /* ── END METRICS ── */
 
   @media (max-width: 600px) {
-    .framework { padding: 28px 20px; }
-    .stage { grid-template-columns: 90px 1fr; }
-    .stage-desc { display: none; }
+    .framework { padding: 20px 16px; }
+    .framework::before { display: none; }
+    .framework-title { font-size: 10px; margin-bottom: 20px; }
+
+    .stage {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px 14px;
+    }
+
+    .stage-name {
+      font-size: 10px;
+    }
+
+    .stage-bar-wrap {
+      gap: 8px;
+    }
+
+    .stage-bar {
+      height: 8px;
+    }
+
+    .stage-desc {
+      display: block;
+      font-size: 0.75rem;
+      min-width: unset;
+      color: rgba(245,240,232,0.5);
+    }
+
+    .connector { margin: 0 0 0 20px; }
+
     .quote-block { padding: 24px 20px; }
-    .gate-preview, .gate-cta { padding: 28px 20px; }
+    .gate-preview, .gate-cta { padding: 24px 16px; }
+
+    .email-form {
+      flex-direction: column;
+    }
+
+    .email-form input[type="email"] {
+      min-width: unset;
+      width: 100%;
+    }
+
+    .email-form button {
+      width: 100%;
+    }
+
+    .flow-step-header {
+      gap: 10px;
+      padding: 14px 14px;
+    }
+
+    .step-badge {
+      display: none;
+    }
+
+    .checklist-locked { padding: 24px 16px; }
   }
 </style>
 </head>
